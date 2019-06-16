@@ -1,11 +1,75 @@
 <!doctype html>
 <html>
 <head>
-<title>HTML Page</title>
+  <!-- Basic Page Needs
+  ================================================== -->    
+<title>CrazyFeet</title>
 <meta name="description" content="Our first page">
 <meta name="keywords" content="html template">
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<script type="text/javascript" src="js/jquery-3.js"></script>
+
+<link rel="stylesheet" href="assets/css/crazyFeet.css">
 </head>
 <body>
-Hello World!
+  <div class="initial-page"></div>
+  <input class="start-play" type="submit" value="Start Play"> 
+  
+  <div class="play-page column"> 
+    <button class="container random-button"><i class="glyphicon glyphicon-envelope"></i></button>
+    <div class="container box-1">Campana</div>
+    <div class="container box-2">Son</div>
+    <div class="container box-3">Agua</div>
+    <div class="container box-4">Agua</div>
+  </div>
 </body>
+
+
+<script>
+
+var todosLosPasos = ["Pulso", "Agua", "Campana", "Tap", "Son", "Plena", "Sussy Q", "Doble Cross","Doble Back Cross", "Forward Cross", "Backward Cross", "Hook", "Swivel", "Sailor", "Sailor Cross", "Sailor Backcross", "Tap Sailor", "Twist", "Palladium", "Hook Turn", "Columbia Step", "Rodilla Pase", "B-boy", "Cuerda", "Mambo", "Jala Jala", "Braid Step", "Half", "Talones", "Triangulo", "Borrachito", "Racimo", "Cocolo", "Cucum", "Rabona", "Tap & kick", "Punta Talon", "Bamba", "Hook Tap", "Flogger", "Chavo", "Pivot", "Doble Cross Sincopado", "Mata Cucarachas", "Bossa Nova", "Mambo Sincopado", "Passe", "Kick Sincopado", "kick Sincopado Al Passdeboure", "Giro derecha", "Giro Izquierda", "Medio y Medio", "Entero y Entero", "Derecha Amague", "Izquierda Amague", "Semi Circulo", "CBL", "Contragiro Derecha", "Contragiro Izquierda"];
+var selectedSteps = [];
+
+
+$(document).ready(() => {
+var i;
+for (i = 0; i < todosLosPasos.length; i++) {
+  $( ".initial-page" ).prepend( "<input type=checkbox name=step value="+ todosLosPasos[i] +">"+ todosLosPasos[i] +"<br>" );  
+}
+$(".play-page").hide();
+});
+
+$(".start-play").click(function() {
+$.each($("input[name='step']:checked"), function(){            
+    selectedSteps.push($(this).val());
+});
+$(".initial-page").hide();
+$(".play-page").show();
+$(".start-play").hide();
+$(".random-button").click();
+});
+
+$(".random-button").on( "click", function() {
+  var min=0; 
+  var max=selectedSteps.length;  
+  var random = Math.random() * (+max - +min) + +min;
+  $(".container.box-1").text(selectedSteps[Math.floor(random)]);
+  random = Math.random() * (+max - +min) + +min; 
+  $(".container.box-2").text(selectedSteps[Math.floor(random)]);
+  random = Math.random() * (+max - +min) + +min; 
+  $(".container.box-3").text(selectedSteps[Math.floor(random)]);
+  random = Math.random() * (+max - +min) + +min;
+  $(".container.box-4").text(selectedSteps[Math.floor(random)]); 
+  console.log("Random Number Generated : " + random ); 
+  console.log( selectedSteps[Math.floor(random)] );
+  console.log( "ericooooopoo" );
+  
+});
+
+</script>
+
 </html>
