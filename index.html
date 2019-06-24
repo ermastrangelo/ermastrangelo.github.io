@@ -23,11 +23,11 @@
    
   
   <div class="play-page column"> 
-    <button class="container random-button"><i class="glyphicon glyphicon-envelope"></i></button>
-    <div class="container box-1">Campana</div>
-    <div class="container box-2">Son</div>
-    <div class="container box-3">Agua</div>
-    <div class="container box-4">Agua</div>
+    <!-- <button class="container random-button">Next</i></button> -->
+    <div class="container box-1">Click</div>
+    <div class="container box-2">Screen</div>
+    <div class="container box-3">To</div>
+    <div class="container box-4">Begin</div>
   </div>
 </body>
 
@@ -58,7 +58,8 @@ $(".select-all-and-start-play").hide();
 $(".random-button").click();
 });
 
-$(".random-button").on( "click", function() {
+// $(".random-button").on( "click", function() {
+  $(".play-page").on( "click", function() {
   var min=0; 
   var max=selectedSteps.length;  
   var random = Math.random() * (+max - +min) + +min;
