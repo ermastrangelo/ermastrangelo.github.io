@@ -16,8 +16,11 @@
 <link rel="stylesheet" href="assets/css/crazyFeet.css">
 </head>
 <body>
+  <div class="select-all-and-start-play">
+      <input type="checkbox" onClick="toggle(this)" /> Select All <input class="start-play" type="submit" value="Start Play"><br/><br/>
+  </div>
   <div class="initial-page"></div>
-  <input class="start-play" type="submit" value="Start Play"> 
+   
   
   <div class="play-page column"> 
     <button class="container random-button"><i class="glyphicon glyphicon-envelope"></i></button>
@@ -31,14 +34,15 @@
 
 <script>
 
-var todosLosPasos = ["Pulso", "Agua", "Campana", "Tap", "Son", "Plena", "Sussy Q", "Doble Cross","Doble Back Cross", "Forward Cross", "Backward Cross", "Hook", "Swivel", "Sailor", "Sailor Cross", "Sailor Backcross", "Tap Sailor", "Twist", "Palladium", "Hook Turn", "Columbia Step", "Rodilla Pase", "B-boy", "Cuerda", "Mambo", "Jala Jala", "Braid Step", "Half", "Talones", "Triangulo", "Borrachito", "Racimo", "Cocolo", "Cucum", "Rabona", "Tap & kick", "Punta Talon", "Bamba", "Hook Tap", "Flogger", "Chavo", "Pivot", "Doble Cross Sincopado", "Mata Cucarachas", "Bossa Nova", "Mambo Sincopado", "Passe", "Kick Sincopado", "kick Sincopado Al Passdeboure", "Giro derecha", "Giro Izquierda", "Medio y Medio", "Entero y Entero", "Derecha Amague", "Izquierda Amague", "Semi Circulo", "CBL", "Contragiro Derecha", "Contragiro Izquierda"];
+// var todosLosPasos = ["Pulso", "Agua", "Campana", "Tap", "Son", "Plena", "Sussy Q", "Doble Cross","Doble Back Cross", "Forward Cross", "Backward Cross", "Hook", "Swivel", "Sailor", "Sailor Cross", "Sailor Backcross", "Tap Sailor", "Twist", "Palladium", "Hook Turn", "Columbia Step", "Rodilla Pase", "B-boy", "Cuerda", "Mambo", "Jala Jala", "Braid Step", "Half", "Talones", "Triangulo", "Borrachito", "Racimo", "Cocolo", "Cucum", "Rabona", "Tap & kick", "Punta Talon", "Bamba", "Hook Tap", "Flogger", "Chavo", "Pivot", "Doble Cross Sincopado", "Mata Cucarachas", "Bossa Nova", "Mambo Sincopado", "Passe", "Kick Sincopado", "kick Sincopado Al Passdeboure", "Giro derecha", "Giro Izquierda", "Medio y Medio", "Entero y Entero", "Derecha Amague", "Izquierda Amague", "Semi Circulo", "CBL", "Contragiro Derecha", "Contragiro Izquierda"];
+var todosLosPasos = ["Pulso", "Agua", "Campana", "Tap", "Son", "Plena", "SussyQ", "DobleCross","DobleBackCross", "ForwardCross", "BackwardCross", "Hook", "Swivel", "Sailor", "SailorCross", "SailorBackcross", "TapSailor", "Twist", "Palladium", "HookTurn", "ColumbiaStep", "RodillaPase", "B-boy", "Cuerda", "Mambo", "JalaJala", "BraidStep", "Half", "Talones", "Triangulo", "Borrachito", "Racimo", "Cocolo", "Cucum", "Rabona", "Tap&Kick", "PuntaTalon", "Bamba", "HookTap", "Flogger", "Chavo", "Pivot", "DobleCrossSincopado", "MataCucarachas", "BossaNova", "MamboSincopado", "Passe", "KickSincopado", "KickSincopadoAlPassdeboure", "GiroDerecha", "GiroIzquierda", "MedioYMedio", "EnteroYEntero", "DerechaAmague", "IzquierdaAmague", "SemiCirculo", "CBL", "ContragiroDerecha", "ContragiroIzquierda"];
 var selectedSteps = [];
 
 
 $(document).ready(() => {
 var i;
 for (i = 0; i < todosLosPasos.length; i++) {
-  $( ".initial-page" ).prepend( "<input type=checkbox name=step value="+ todosLosPasos[i] +">"+ todosLosPasos[i] +"<br>" );  
+  $( ".initial-page" ).prepend( "<div class=stepItem><input type=checkbox name=step value="+ todosLosPasos[i] +">"+ todosLosPasos[i] +"<br></div>" );  
 }
 $(".play-page").hide();
 });
@@ -49,7 +53,8 @@ $.each($("input[name='step']:checked"), function(){
 });
 $(".initial-page").hide();
 $(".play-page").show();
-$(".start-play").hide();
+// $(".start-play").hide();
+$(".select-all-and-start-play").hide();
 $(".random-button").click();
 });
 
@@ -69,6 +74,13 @@ $(".random-button").on( "click", function() {
   console.log( "ericooooopoo" );
   
 });
+
+function toggle(source) {
+  checkboxes = document.getElementsByName('step');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
 
 </script>
 
